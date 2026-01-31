@@ -1,0 +1,21 @@
+{
+  "name": "player",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "node scripts/generate-sounds.js && tsc && vite build",
+    "build:gh": "tsc && vite build --base ./",
+    "preview": "vite preview",
+    "deploy": "npm run build:gh && gh-pages -d dist"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.2.0",
+    "typescript": "~5.9.3",
+    "vite": "^7.2.4"
+  },
+  "dependencies": {
+    "fuse.js": "^7.1.0"
+  }
+}

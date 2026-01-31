@@ -1,0 +1,225 @@
+:root {
+  --bg: #0f0f12;
+  --surface: #1a1a20;
+  --surface-hover: #22222a;
+  --accent: #7c5cff;
+  --accent-hover: #9a7dff;
+  --text: #e8e8ec;
+  --text-muted: #9090a0;
+  --border: #2a2a32;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+#app {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+.header {
+  margin-bottom: 1.5rem;
+}
+
+.header h1 {
+  margin: 0 0 1rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.search-wrap {
+  margin-bottom: 0.5rem;
+}
+
+.search-input {
+  width: 100%;
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text);
+}
+
+.search-input::placeholder {
+  color: var(--text-muted);
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.letter-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.letter-btn {
+  min-width: 2rem;
+  padding: 0.35rem 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.letter-btn:hover {
+  background: var(--surface-hover);
+}
+
+.letter-btn.active {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.main {
+  min-height: 200px;
+}
+
+.letter-section {
+  margin-bottom: 1.5rem;
+}
+
+.letter-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 0.75rem;
+  color: var(--text-muted);
+}
+
+.letter-pagination {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  margin-bottom: 1rem;
+}
+
+.letter-page-btn {
+  min-width: 2rem;
+  padding: 0.3rem 0.5rem;
+  font-size: 0.85rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.letter-page-btn:hover {
+  background: var(--surface-hover);
+}
+
+.letter-page-btn.active {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.sounds-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.sound-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.5rem 0.75rem;
+  background: var(--surface);
+  border-radius: 8px;
+  border: 1px solid transparent;
+}
+
+.sound-row:hover {
+  background: var(--surface-hover);
+}
+
+.sound-name {
+  flex: 1;
+  font-size: 0.95rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sound-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.sound-duration {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  min-width: 5rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.sound-duration .duration-total {
+  min-width: 3rem;
+  text-align: right;
+}
+
+.btn-play,
+.btn-download {
+  padding: 0.4rem 0.75rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.btn-play:hover,
+.btn-download:hover {
+  background: var(--surface-hover);
+}
+
+.btn-play.playing {
+  background: #c54545;
+  border-color: #c54545;
+}
+
+.btn-play.playing:hover {
+  background: #d65555;
+}
+
+.btn-download {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.btn-download:hover {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+}
+
+.empty {
+  color: var(--text-muted);
+  text-align: center;
+  padding: 2rem;
+}
