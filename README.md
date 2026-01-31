@@ -32,25 +32,19 @@ Run `npm run dev` and open http://localhost:5173/ (or the port shown).
 
 ## GitHub Pages Deployment
 
-Uses **GitHub Actions** to build and deploy (bypasses Jekyll).
+Uses **GitHub Actions** to build and deploy (bypasses Jekyll). The workflow in `.github/workflows/deploy-pages.yml` runs on every push to `main` or `master` and sets the base path from the repo name automatically.
 
-### 1. Set your repo name
-
-Edit `player/package.json` and replace `d4x-audio` in the `build:gh` script with your repo name:
-
-```json
-"build:gh": "tsc && vite build --base /YOUR-REPO-NAME/",
-```
-
-### 2. Use GitHub Actions as the Pages source
+### 1. Use GitHub Actions as the Pages source
 
 Go to your repo **Settings → Pages**. Under "Build and deployment", set **Source** to **GitHub Actions** (not "Deploy from a branch").
 
-### 3. Push to trigger deployment
+### 2. Push to trigger deployment
 
 Push to `main` or `master`. The workflow in `.github/workflows/deploy-pages.yml` will build the player and deploy to Pages.
 
 Site URL: `https://USERNAME.github.io/REPO-NAME/`
+
+If the workflow fails on "Install dependencies" (e.g. "package-lock.json out of sync"), run `npm install` locally and commit the updated `package-lock.json`.
 
 ### Local deploy (alternative)
 

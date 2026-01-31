@@ -28,7 +28,7 @@ function loadDuration(path: string, onLoaded: (dur: number) => void) {
     onLoaded(durationCache.get(path)!);
     return;
   }
-  const audio = new Audio(`/${path}`);
+  const audio = new Audio(path);
   audio.addEventListener("loadedmetadata", () => {
     const dur = audio.duration;
     durationCache.set(path, dur);
@@ -39,7 +39,7 @@ function loadDuration(path: string, onLoaded: (dur: number) => void) {
 }
 
 async function loadSounds(): Promise<Sound[]> {
-  const res = await fetch("/sounds.json");
+  const res = await fetch("sounds.json");
   return res.json();
 }
 
@@ -68,7 +68,7 @@ function updateDurationDisplay(path: string, current: number | null, total: numb
 }
 
 function playStop(path: string, btn: HTMLButtonElement) {
-  const url = `/${path}`;
+  const url = path;
   if (playingPath === path && currentAudio && !currentAudio.paused) {
     currentAudio.pause();
     currentAudio.currentTime = 0;
@@ -119,7 +119,7 @@ function playStop(path: string, btn: HTMLButtonElement) {
 
 function download(path: string, name: string) {
   const a = document.createElement("a");
-  a.href = `/${path}`;
+  a.href = path;
   a.download = name + ".mp3";
   a.click();
 }
@@ -147,7 +147,7 @@ function setupApp() {
   let currentLetter = availableLetters()[0] ?? "";
   let letterPage = 0;
 
-  function render() {
+  function render(restoreSearchFocus = false) {
     const letterForFilter = currentLetter === UNIDENTIFIED_LABEL ? UNIDENTIFIED_LETTER : currentLetter;
     const soundsForLetter = currentLetter
       ? filteredSounds.filter((s) => s.letter === letterForFilter)
@@ -240,6 +240,9 @@ function setupApp() {
     const searchInput = app.querySelector<HTMLInputElement>("#search");
     if (searchInput) {
       searchInput.value = (app as any).__searchValue ?? "";
+      if (restoreSearchFocus) {
+        searchInput.focus();
+      }
       searchInput.oninput = () => {
         (app as any).__searchValue = searchInput.value;
         const q = searchInput.value.trim();
@@ -252,7 +255,7 @@ function setupApp() {
         const letters = availableLetters();
         currentLetter = letters.includes(currentLetter) ? currentLetter : letters[0] ?? UNIDENTIFIED_LABEL;
         letterPage = 0;
-        render();
+        render(true);
       };
     }
   }
